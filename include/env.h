@@ -16,7 +16,7 @@ bool env_val_is_good(char const *);
 char **env_add(char **, char const *);
 bool env_contains(char **, char const *);
 char **env_remove(char **, char const *);
-char **env_cp(char **);
+char **env_copy(char **);
 int env_destroy(char **);
 size_t env_len(char **);
 
