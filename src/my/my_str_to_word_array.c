@@ -20,7 +20,7 @@ static size_t count_word(char *s, char const *delim)
     return count;
 }
 
-static char **fil_arr(char **arr, char *s, char const *delim)
+static char **fill_arr(char **arr, char *s, char const *delim)
 {
     char *dupped = my_strdup(s);
     size_t i = 0;
