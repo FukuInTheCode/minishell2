@@ -14,5 +14,6 @@ shell_t *shell_create(void)
     shell->cmds = command_array_create();
     shell->user_input = NULL;
     shell->return_code = 0;
+    shell->env = NULL;
     return shell;
 }

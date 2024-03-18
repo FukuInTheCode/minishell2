@@ -14,6 +14,7 @@ typedef struct shell_s {
     int return_code;
     char *user_input;
     command_t **cmds;
+    char **env;
 } shell_t;
 
 shell_t *shell_create(void);
