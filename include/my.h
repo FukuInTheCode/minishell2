@@ -31,5 +31,6 @@
 
 char *my_strdup(char const *);
 char *my_strtok(char *, char const *);
+size_t my_strlen(char const *);
 
 #endif
