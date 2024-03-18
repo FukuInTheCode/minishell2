@@ -34,5 +34,6 @@ int command_destroy(command_t *cmd);
 command_t **command_array_create(void);
 int command_array_destroy(command_t **);
 size_t command_array_len(command_t **);
+command_t **command_array_add(command_t **, command_t *);
 
 #endif
