@@ -24,4 +24,28 @@
     #include <sys/wait.h>
     #include <fcntl.h>
 
+    #define SYS_OUT 1
+    #define SYS_IN 0
+
+typedef enum type_e {
+    COMMAND,
+    PIPE,
+    LEFT_RED,
+    LEFT_DBLRED,
+    RIGHT_RED,
+    RIGHT_DBLRED,
+    END
+} type_t;
+
+typedef struct command_s {
+    int argc;
+    char **argv;
+    type_t type;
+    int out;
+    int in;
+} command_t;
+
+
+command_t *command_create(void);
+
 #endif
