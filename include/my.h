@@ -29,5 +29,6 @@
     #define SYS_OUT 1
     #define SYS_IN 0
 
+char *my_strdup(char const *);
 
 #endif
