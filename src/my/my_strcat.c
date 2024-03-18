@@ -12,6 +12,8 @@ char *my_strcat(char *dest, char const *src)
     int dest_len = 0;
     int i;
 
+    if (!src)
+        return dest;
     while (dest[dest_len] != '\0')
         dest_len++;
     for (i = 0; src[i] != '\0'; i++)
