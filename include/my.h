@@ -25,6 +25,7 @@
     #include <fcntl.h>
 
     #include "command.h"
+    #include "shell.h"
 
     #define SYS_OUT 1
     #define SYS_IN 0
@@ -36,5 +37,6 @@ void *my_memset(char *, char, size_t);
 char **my_str_to_word_array(char *, char const *);
 int my_free_word_array(char **);
 size_t my_len_word_array(char **);
+int my_dputs(int, char const *);
 
 #endif
