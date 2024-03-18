@@ -30,5 +30,6 @@
     #define SYS_IN 0
 
 char *my_strdup(char const *);
+char *my_strtok(char *, char const *);
 
 #endif
