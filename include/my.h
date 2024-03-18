@@ -34,5 +34,6 @@ char *my_strtok(char *, char const *);
 size_t my_strlen(char const *);
 void *my_memset(char *, char, size_t);
 char **my_str_to_word_array(char *, char const *);
+int my_free_word_array(char **);
 
 #endif
