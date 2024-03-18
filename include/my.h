@@ -47,5 +47,6 @@ typedef struct command_s {
 
 
 command_t *command_create(void);
+int command_destroy(command_t *cmd);
 
 #endif
