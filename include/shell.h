@@ -17,5 +17,6 @@ typedef struct shell_s {
 } shell_t;
 
 shell_t *shell_create(void);
+int shell_destroy(shell_t *);
 
 #endif
