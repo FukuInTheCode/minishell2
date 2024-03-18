@@ -24,4 +24,17 @@
     #include <sys/wait.h>
     #include <fcntl.h>
 
+    #include "command.h"
+
+    #define SYS_OUT 1
+    #define SYS_IN 0
+
+char *my_strdup(char const *);
+char *my_strtok(char *, char const *);
+size_t my_strlen(char const *);
+void *my_memset(char *, char, size_t);
+char **my_str_to_word_array(char *, char const *);
+int my_free_word_array(char **);
+size_t my_len_word_array(char **);
+
 #endif
