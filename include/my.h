@@ -25,6 +25,7 @@
     #include <fcntl.h>
 
     #include "command.h"
+    #include "shell.h"
 
     #define SYS_OUT 1
     #define SYS_IN 0
