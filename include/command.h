@@ -7,6 +7,7 @@
 
 #ifndef COMMAND_H
     #define COMMAND_H
+    #include <stddef.h>
 
 typedef enum type_e {
     COMMAND,
@@ -32,5 +33,6 @@ int command_destroy(command_t *cmd);
 
 command_t **command_array_create(void);
 int command_array_destroy(command_t **);
+size_t command_array_len(command_t **);
 
 #endif
