@@ -29,7 +29,12 @@ typedef struct command_s {
 
 
 command_t *command_create(void);
-int command_destroy(command_t *cmd);
+int command_destroy(command_t *);
+int command_set_argc(command_t *, int);
+int command_set_argv(command_t *, char **);
+int command_set_type(command_t *, type_t);
+int command_set_in(command_t *, int);
+int command_set_out(command_t *, int);
 
 command_t **command_array_create(void);
 int command_array_destroy(command_t **);
