@@ -9,6 +9,7 @@
     #define ENV_H
 
     #include <stdbool.h>
+    #include <stddef.h>
 
 char *env_val_concat(char const *, char const *);
 bool env_val_is_good(char const *);
@@ -17,5 +18,6 @@ bool env_contains(char **, char const *);
 char **env_remove(char **, char const *);
 char **env_cp(char **);
 int env_destroy(char **);
+size_t env_len(char **);
 
 #endif
