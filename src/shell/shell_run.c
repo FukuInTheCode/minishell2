@@ -17,6 +17,5 @@ int shell_run(shell_t *shell)
             my_dputs(1, "$>");
         my_dputs(1, input);
     }
-    shell->return_code = 8;
     return 0;
 }

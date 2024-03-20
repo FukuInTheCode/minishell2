@@ -13,7 +13,7 @@
 
 char *env_val_concat(char const *, char const *);
 bool env_val_is_good(char const *);
-char **env_add(char **, char const *);
+char **env_add(char **, char const *, char const *);
 bool env_contains(char **, char const *);
 char **env_remove(char **, char const *);
 char **env_copy(char **);
