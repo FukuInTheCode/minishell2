@@ -23,6 +23,7 @@ int shell_destroy(shell_t *);
 int shell_set_code(shell_t *, int);
 int shell_set_cmds(shell_t *, command_t **);
 int shell_set_input(shell_t *, char *);
+int shell_set_oldpwd(shell_t *, char const *);
 int shell_run(shell_t *);
 
 #endif

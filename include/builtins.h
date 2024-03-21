@@ -14,5 +14,6 @@
 int builtin_setenv(shell_t *, int, char **);
 int builtin_env(shell_t *, int, char **);
 int builtin_unsetenv(shell_t *, int, char **);
+int builtin_cd(shell_t *shell, int, char **);
 
 #endif
