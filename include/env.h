@@ -20,5 +20,6 @@ char **env_copy(char **);
 int env_destroy(char **);
 size_t env_len(char **);
 char **env_change(char **, char const *, char const *);
+char *env_get(char **, char const *);
 
 #endif
