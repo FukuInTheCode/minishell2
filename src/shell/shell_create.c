@@ -15,5 +15,6 @@ shell_t *shell_create(void)
     shell->user_input = NULL;
     shell->return_code = 0;
     shell->env = NULL;
+    shell->oldpwd = NULL;
     return shell;
 }
