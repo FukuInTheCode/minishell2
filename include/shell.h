@@ -15,6 +15,7 @@ typedef struct shell_s {
     char *user_input;
     command_t **cmds;
     char **env;
+    char *oldpwd;
 } shell_t;
 
 shell_t *shell_create(void);
