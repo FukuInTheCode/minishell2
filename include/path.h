@@ -13,5 +13,6 @@
 char *path_concat(char const *, char const *);
 bool path_is_executable(char const *);
 bool path_is_dir(char const *);
+bool path_exist(char const *);
 
 #endif
