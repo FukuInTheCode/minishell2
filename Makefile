@@ -10,7 +10,7 @@ NAME   = mysh
 CC	   = gcc
 
 WFLAGS = -Wall -Wextra -Wno-unused-value -Wno-sign-compare 	\
-			-Wno-unused-parameter 							\
+			-Wno-unused-parameter -g 						\
 
 LIBS = -lm
 
