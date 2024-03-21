@@ -8,6 +8,9 @@
 #ifndef PATH_H
     #define PATH_H
 
+    #include <stdbool.h>
+
 char *path_concat(char const *, char const *);
+bool path_is_executable(char const *);
 
 #endif
