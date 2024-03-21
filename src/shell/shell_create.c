@@ -16,5 +16,6 @@ shell_t *shell_create(void)
     shell->return_code = 0;
     shell->env = NULL;
     shell->oldpwd = NULL;
+    shell->prompt = my_strdup("$>");
     return shell;
 }

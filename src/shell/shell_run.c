@@ -12,10 +12,10 @@ int shell_run(shell_t *shell)
     char *input = NULL;
     size_t len = 0;
 
+    shell_prompt(shell);
     for (; getline(&input, &len, stdin) != -1;) {
-        if (isatty(0))
-            my_dputs(1, "$>");
         my_dputs(1, input);
+        shell_prompt(shell);
     }
     return 0;
 }
