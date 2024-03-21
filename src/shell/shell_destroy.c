@@ -13,6 +13,7 @@ int shell_destroy(shell_t *shell)
 
     free(shell->user_input);
     free(shell->oldpwd);
+    free(shell->prompt);
     command_array_destroy(shell->cmds);
     free(shell);
     exit(return_val);

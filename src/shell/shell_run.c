@@ -13,8 +13,6 @@ int shell_run(shell_t *shell)
     size_t len = 0;
 
     for (; getline(&input, &len, stdin) != -1;) {
-        if (isatty(0))
-            my_dputs(1, "$>");
         my_dputs(1, input);
     }
     return 0;
