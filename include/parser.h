@@ -21,6 +21,7 @@ typedef struct parse_s {
 parser_t *parser_create(void);
 int parser_destroy(parser_t *);
 int parser_add(parser_t *, char *);
+int parser_parse(parser_t *);
 
 int parser_func_char(parser_t *, char);
 int parser_func_semicolon(parser_t *);
