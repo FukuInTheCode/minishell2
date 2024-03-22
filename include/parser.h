@@ -10,6 +10,14 @@
 
     #include <stddef.h>
 
+
+    #define DOUBLE_LEFT "<<"
+    #define DOUBLE_RIGHT ">>"
+    #define SINGLE_LEFT " < "
+    #define SINGLE_RIGHT " > "
+    #define PIPE "|"
+    #define SEMICOLON ";"
+
 typedef int (*parsing_func)();
 
 typedef struct parse_s {
