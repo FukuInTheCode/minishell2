@@ -9,7 +9,7 @@
 #include "parser.h"
 #include <stdio.h>
 
-static int parse_string(parser_t *parser, char *s)
+static int parse_string(parser_t *parser, char *s, char c)
 {
     bool inside_string = false;
     size_t n = 0;
@@ -17,12 +17,12 @@ static int parse_string(parser_t *parser, char *s)
     for (size_t i = 0; s[i]; i++) {
         if (s[i] == '\"')
             inside_string = !inside_string;
-        if (!inside_string && s[i] == ';' && n) {
+        if (!inside_string && s[i] == c && n) {
             parser_add(parser, my_strndup(s + i - n, n));
             n = 0;
             continue;
         }
-        n += s[i] != ';';
+        n += s[i] != c;
     }
     if (n)
         parser_add(parser, my_strndup(s + my_strlen(s) - n, n));
@@ -30,7 +30,7 @@ static int parse_string(parser_t *parser, char *s)
     return 0;
 }
 
-int parser_func_semicolon(parser_t *parser)
+int parser_func_char(parser_t *parser, char c)
 {
     parser_t *tmp = parser_create();
 
