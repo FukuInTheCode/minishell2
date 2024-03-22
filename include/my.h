@@ -45,5 +45,6 @@ int my_dputs(int, char const *);
 char *my_strcat(char *, char const *);
 int my_strncmp(char const *, char const *, int);
 char *my_strndup(char const *, size_t);
+int my_strcmp(char const *, char const *);
 
 #endif
