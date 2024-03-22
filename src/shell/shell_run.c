@@ -14,8 +14,9 @@ int shell_run(shell_t *shell)
 
     shell_prompt(shell);
     for (; getline(&input, &len, stdin) != -1;) {
-        my_dputs(1, input);
+        shell_command(shell, input);
         shell_prompt(shell);
     }
+    free(input);
     return 0;
 }

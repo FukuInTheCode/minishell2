@@ -27,5 +27,6 @@ int shell_set_input(shell_t *, char *);
 int shell_set_oldpwd(shell_t *, char const *);
 int shell_prompt(shell_t *);
 int shell_run(shell_t *);
+int shell_command(shell_t *, char const *);
 
 #endif
