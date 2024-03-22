@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-int parser_func_semicolon(parser_t *parser)
+int parser_func_right(parser_t *parser)
 {
-    return parser_func_char(parser, ';');
+    return parser_func_char(parser, '>');
 }
