@@ -17,6 +17,7 @@ char *my_strndup(char const *s, size_t n)
     if (!dupped)
         return NULL;
     my_memset((void *)dupped, 0, n + 1);
-    my_strcat(dupped, s);
+    for (size_t i = 0; i < n; i++)
+        dupped[i] = s[i];
     return dupped;
 }
