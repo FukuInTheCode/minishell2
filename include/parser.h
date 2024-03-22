@@ -23,7 +23,7 @@ int parser_destroy(parser_t *);
 int parser_add(parser_t *, char *);
 int parser_parse(parser_t *, char const *);
 
-int parser_func_char(parser_t *, char);
+int parser_func_char(parser_t *, char const *);
 int parser_func_semicolon(parser_t *);
 int parser_func_right(parser_t *);
 int parser_func_pipe(parser_t *);
