@@ -35,7 +35,7 @@ int parser_func_char(parser_t *parser, char c)
     parser_t *tmp = parser_create();
 
     for (size_t i = 0; parser->parsed_input[i]; i++)
-        parse_string(tmp, parser->parsed_input[i]);
+        parse_string(tmp, parser->parsed_input[i], c);
     parser->parsed_input = tmp->parsed_input;
     parser->size = tmp->size;
     free(tmp);
