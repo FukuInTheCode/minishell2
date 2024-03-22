@@ -9,6 +9,7 @@
     #define PARSER_H
 
     #include <stddef.h>
+    #include "command.h"
 
 
     #define DOUBLE_LEFT "<<"
@@ -30,6 +31,7 @@ parser_t *parser_create(void);
 int parser_destroy(parser_t *);
 int parser_add(parser_t *, char *);
 int parser_parse(parser_t *, char const *);
+command_t **parser_command(parser_t *);
 
 int parser_func_char(parser_t *, char const *);
 int parser_func_semicolon(parser_t *);

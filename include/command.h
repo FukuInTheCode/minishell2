@@ -11,7 +11,7 @@
 
 typedef enum type_e {
     COMMAND,
-    PIPE,
+    PIPE_T,
     LEFT_RED,
     LEFT_DBLRED,
     RIGHT_RED,
