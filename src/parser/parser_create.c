@@ -14,7 +14,7 @@ parser_t *parser_create(void)
     if (!parser)
         return NULL;
     parser->parsed_input = malloc(sizeof(char *));
-    if (parser->parsed_input)
+    if (!parser->parsed_input)
         return NULL;
     *parser->parsed_input = NULL;
     parser->step = 0;

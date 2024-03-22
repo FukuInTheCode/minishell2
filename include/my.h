@@ -44,5 +44,6 @@ size_t my_len_word_array(char **);
 int my_dputs(int, char const *);
 char *my_strcat(char *, char const *);
 int my_strncmp(char const *, char const *, int);
+char *my_strndup(char const *, size_t);
 
 #endif
