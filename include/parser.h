@@ -42,6 +42,8 @@ int parser_func_doubleright(parser_t *);
 static parsing_func const parsings_functions[] = {
     parser_func_semicolon,
     parser_func_pipe,
+    parser_func_left,
+    parser_func_right,
     NULL,
 };
 
