@@ -25,9 +25,13 @@ int parser_parse(parser_t *);
 
 int parser_func_char(parser_t *, char);
 int parser_func_semicolon(parser_t *);
+int parser_func_right(parser_t *);
+int parser_func_pipe(parser_t *);
+int parser_func_left(parser_t *);
 
 static parsing_func const parsings_functions[] = {
     parser_func_semicolon,
+    parser_func_pipe,
     NULL,
 };
 
