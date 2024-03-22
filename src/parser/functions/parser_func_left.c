@@ -9,5 +9,5 @@
 
 int parser_func_left(parser_t *parser)
 {
-    return parser_func_char(parser, '<');
+    return parser_func_char(parser, SINGLE_LEFT);
 }
