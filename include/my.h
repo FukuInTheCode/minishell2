@@ -29,6 +29,7 @@
     #include "env.h"
     #include "path.h"
     #include "builtins.h"
+    #include "parser.h"
 
     #define SYS_OUT 1
     #define SYS_IN 0
