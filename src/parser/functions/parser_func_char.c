@@ -9,25 +9,30 @@
 #include "parser.h"
 #include <stdio.h>
 
+static int add_remaining(parser_t *parser, char const *s, size_t n)
+{
+    parser_add(parser, my_strndup(s + my_strlen(s) - n, n));
+    return 0;
+}
+
 static int parse_string(parser_t *parser, char *s, char const *delim)
 {
-    bool inside_string = false;
+    bool inquote = false;
     size_t n = 0;
 
     for (size_t i = 0; s[i]; i++) {
         if (s[i] == '\"')
-            inside_string = !inside_string;
-        if (!inside_string && !my_strncmp(delim, s + i, my_strlen(delim))
-            && n) {
+            inquote = !inquote;
+        if (!inquote && !my_strncmp(delim, s + i, my_strlen(delim)) && n) {
             parser_add(parser, my_strndup(s + i - n, n));
             parser_add(parser, my_strdup(delim));
             n = 0;
-            continue;
-        }
-        n += my_strncmp(delim, s + i, my_strlen(delim)) != 0;
+            i += my_strlen(delim) - 1;
+        } else
+            n += my_strncmp(delim, s + i, my_strlen(delim)) != 0;
     }
     if (n)
-        parser_add(parser, my_strndup(s + my_strlen(s) - n, n));
+        add_remaining(parser, s, n);
     free(s);
     return 0;
 }
