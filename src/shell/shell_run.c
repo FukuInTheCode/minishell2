@@ -17,5 +17,6 @@ int shell_run(shell_t *shell)
         my_dputs(1, input);
         shell_prompt(shell);
     }
+    free(input);
     return 0;
 }
