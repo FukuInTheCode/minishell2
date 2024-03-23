@@ -55,7 +55,7 @@ command_t **parser_command(parser_t *parser)
             is_base = add_to_arr(&arr, LEFT_DBLRED, parser->parsed_input, &i);
         if (!my_strcmp(parser->parsed_input[i], SINGLE_RIGHT))
             is_base = add_to_arr(&arr, RIGHT_RED, parser->parsed_input, &i);
-        if (!my_strcmp(parser->parsed_input[i], SINGLE_RIGHT))
+        if (!my_strcmp(parser->parsed_input[i], SINGLE_LEFT))
             is_base = add_to_arr(&arr, LEFT_RED, parser->parsed_input, &i);
         setup_basic(&is_base, &arr, parser->parsed_input[i]);
     }
