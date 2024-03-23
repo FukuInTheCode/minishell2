@@ -39,5 +39,6 @@ command_t **command_array_create(void);
 int command_array_destroy(command_t **);
 size_t command_array_len(command_t **);
 command_t **command_array_add(command_t **, command_t *);
+int command_array_pipe(command_t **);
 
 #endif
