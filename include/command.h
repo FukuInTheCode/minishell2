@@ -16,6 +16,7 @@ typedef enum type_e {
     LEFT_DBLRED,
     RIGHT_RED,
     RIGHT_DBLRED,
+    FILE_T,
     END
 } type_t;
 
