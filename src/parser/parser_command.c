@@ -17,7 +17,7 @@ static bool add_to_arr(command_t ***arr, type_t t, char **input, size_t *i)
         *i += 1;
         command = command_create();
         command_set_type(command, FILE_T);
-        command_set_argv(command, my_str_to_word_array(input[*i], ""));
+        command_set_argv(command, my_str_to_word_array(input[*i], " \t\n"));
         *arr = command_array_add(*arr, command);
     }
     return false;

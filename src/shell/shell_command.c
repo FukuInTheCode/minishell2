@@ -15,7 +15,9 @@ int shell_command(shell_t *shell, char const *input)
     parser_parse(parser, input);
     arr = parser_command(parser);
     command_array_pipe(arr);
+    command_array_redirection(arr);
     for (size_t i = 0; arr[i]; i++) {
+        printf("type %d\n", arr[i]->type);
         if (arr[i]->type != COMMAND && arr[i]->type != FILE_T)
             continue;
         for (size_t j = 0; arr[i]->argv[j]; j++)
