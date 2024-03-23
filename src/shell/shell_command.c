@@ -10,10 +10,10 @@
 int shell_command(shell_t *shell, char const *input)
 {
     parser_t *parser = parser_create();
+    command_t **arr = NULL;
 
     parser_parse(parser, input);
-    for (size_t i = 0; parser->parsed_input[i]; i++)
-        printf("%s\n", parser->parsed_input[i]);
+    arr = parser_command(parser);
     parser_destroy(parser);
     return 0;
 }
