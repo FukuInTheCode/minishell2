@@ -9,7 +9,7 @@
 
 int shell_prompt(shell_t *shell)
 {
-    if (isatty(0))
+    if (isatty(0) && shell && shell->prompt)
         my_dputs(1, shell->prompt);
     return 0;
 }
