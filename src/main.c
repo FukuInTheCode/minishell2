@@ -16,7 +16,7 @@ int main(int argc, char **argv, char **envp)
     shell = shell_create();
     if (!shell)
         return 84;
-    shell_run(shell);
-    shell_destroy(shell);
-    return 0;
+    if (shell_run(shell) == 84)
+        return 84;
+    return shell_destroy(shell);
 }
