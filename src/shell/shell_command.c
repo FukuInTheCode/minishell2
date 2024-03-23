@@ -7,25 +7,22 @@
 
 #include "my.h"
 
+
 int shell_command(shell_t *shell, char const *input)
 {
     parser_t *parser = parser_create();
-    command_t **arr = NULL;
 
-    parser_parse(parser, input);
-    arr = parser_command(parser);
-    command_array_pipe(arr);
-    command_array_redirection(arr);
-    for (size_t i = 0; arr[i]; i++) {
-        printf("type %d\n", arr[i]->type);
-        if (arr[i]->type != COMMAND && arr[i]->type != FILE_T)
-            continue;
-        for (size_t j = 0; arr[i]->argv[j]; j++)
-            printf("%s ", arr[i]->argv[j]);
-        printf("\n");
-        printf("in %d - out %d\n", arr[i]->in, arr[i]->out);
+    if (!parser || parser_parse(parser, input) == 84) {
+        parser_destroy(parser);
+        return 84;
     }
-
+    shell->cmds = parser_command(parser);
+    if (!shell->cmds) {
+        parser_destroy(parser);
+        return 84;
+    }
+    command_array_pipe(shell->cmds);
+    command_array_redirection(shell->cmds);
     parser_destroy(parser);
     return 0;
 }
