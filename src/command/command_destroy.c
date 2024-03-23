@@ -11,7 +11,8 @@ int command_destroy(command_t *cmd)
 {
     if (!cmd)
         return 0;
-    my_free_word_array(cmd->argv);
+    if (cmd->argv)
+        my_free_word_array(cmd->argv);
     free(cmd);
     return 0;
 }
