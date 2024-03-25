@@ -8,22 +8,24 @@
 #include "command.h"
 #include "my.h"
 
-static int handle_file_error(char const *path, bool check_r, bool check_w)
+static int handle_file_error(command_t *cmd, bool check_r, bool check_w)
 {
-    if (!path_exist(path)) {
-        my_dputs(2, path);
+    if (cmd->type != FILE_T) {
+        my_dputs(2, "Missing name for redirect.\n");
+        return 0;
+    }
+    if (!path_exist(cmd->argv[0])) {
+        my_dputs(2, cmd->argv[0]);
         my_dputs(2, ": No such file or directory.\n");
         return 0;
     }
-    if (check_r && !path_readable(path)) {
-        my_dputs(2, path);
+    if (check_r && !path_readable(cmd->argv[0])) {
+        my_dputs(2, cmd->argv[0]);
         my_dputs(2, ": Permission denied.\n");
-        return 0;
     }
-    if (check_w && !path_writable(path)) {
-        my_dputs(2, path);
+    if (check_w && !path_writable(cmd->argv[0])) {
+        my_dputs(2, cmd->argv[0]);
         my_dputs(2, ": Permission denied.\n");
-        return 0;
     }
     return 0;
 }
@@ -32,7 +34,7 @@ static int create_left_redirect(command_t *before, command_t *curr)
 {
     if (!curr->argv || !*curr->argv || !path_readable(*curr->argv) ||
         curr->type != FILE_T) {
-        handle_file_error(*curr->argv, 1, 0);
+        handle_file_error(curr, 1, 0);
         return 1;
     }
     if (before->in != SYS_IN) {
@@ -49,7 +51,7 @@ static int create_right_redirect(command_t *before, command_t *curr)
 {
     if (!curr->argv || !*curr->argv || !path_writable(*curr->argv) ||
         curr->type != FILE_T) {
-        handle_file_error(*curr->argv, 0, 1);
+        handle_file_error(curr, 0, 1);
         return 1;
     }
     if (before->out != SYS_OUT) {
@@ -66,7 +68,7 @@ static int create_dblright_redirect(command_t *before, command_t *curr)
 {
     if (!curr->argv || !*curr->argv || !path_writable(*curr->argv) ||
         curr->type != FILE_T) {
-        handle_file_error(*curr->argv, 0, 1);
+        handle_file_error(curr, 0, 1);
         return 1;
     }
     if (before->out != SYS_OUT) {

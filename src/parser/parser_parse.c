@@ -15,8 +15,9 @@ int parser_parse(parser_t *parser, char const *input)
         free(dupped_input);
         return 84;
     }
-    for (size_t i = 0; parsings_functions[i]; i++)
+    for (size_t i = 0; parsings_functions[i]; i++) {
         if (parsings_functions[i](parser) == 84)
             return 84;
+    }
     return 0;
 }
