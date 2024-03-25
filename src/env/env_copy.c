@@ -19,7 +19,7 @@ char **env_copy(char **env)
     if (!new_env)
         return NULL;
     my_memset((void *)new_env, 0, sizeof(char *) * (len + 1));
-    for (size_t i = 0; i < len; len++)
+    for (size_t i = 0; i < len; i++)
         new_env[i] = my_strdup(env[i]);
     return new_env;
 }

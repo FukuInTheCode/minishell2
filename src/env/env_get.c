@@ -11,9 +11,10 @@ char *env_get(char **env, char const *var)
 {
     if (!env || !var)
         return NULL;
-    for (size_t i = 0; env[i]; i++)
-        if (my_strncmp(env[i], var, my_strlen(var)) &&
+    for (size_t i = 0; env[i]; i++) {
+        if (!my_strncmp(env[i], var, my_strlen(var)) &&
             env[i][my_strlen(var)] == '=')
             return env[i] + my_strlen(var) + 1;
+    }
     return NULL;
 }
