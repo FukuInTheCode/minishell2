@@ -55,7 +55,7 @@ static int create_right_redirect(command_t *before, command_t *curr)
         return 1;
     }
     if (before->out != SYS_OUT) {
-        my_dputs(2, "Ambuguous output redirect.\n");
+        my_dputs(2, "Ambiguous output redirect.\n");
         return 1;
     }
     before->out = open(*curr->argv, O_CREAT | O_WRONLY);
@@ -72,7 +72,7 @@ static int create_dblright_redirect(command_t *before, command_t *curr)
         return 1;
     }
     if (before->out != SYS_OUT) {
-        my_dputs(2, "Ambuguous output redirect.\n");
+        my_dputs(2, "Ambiguous output redirect.\n");
         return 1;
     }
     before->out = open(*curr->argv, O_CREAT | O_WRONLY | O_APPEND);
