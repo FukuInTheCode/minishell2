@@ -11,11 +11,19 @@ shell_t *shell_create(void)
 {
     shell_t *shell = malloc(sizeof(shell_t));
 
+    if (!shell)
+        return NULL;
     shell->cmds = command_array_create();
+    if (!shell->cmds) {
+        free(shell);
+        return NULL;
+    }
     shell->user_input = NULL;
     shell->return_code = 0;
     shell->env = NULL;
     shell->oldpwd = NULL;
-    shell->prompt = my_strdup("$>");
+    shell->prompt = my_strdup("$> ");
+    if (!shell->prompt)
+        return NULL;
     return shell;
 }

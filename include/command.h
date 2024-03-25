@@ -8,6 +8,7 @@
 #ifndef COMMAND_H
     #define COMMAND_H
     #include <stddef.h>
+    #include <stdbool.h>
 
 typedef enum type_e {
     COMMAND,
@@ -42,5 +43,9 @@ size_t command_array_len(command_t **);
 command_t **command_array_add(command_t **, command_t *);
 int command_array_pipe(command_t **);
 int command_array_redirection(command_t **);
+int command_array_error(command_t **, void *);
+
+bool command_is_empty(command_t *);
+int command_check_pipe(command_t *, command_t **, size_t, void *);
 
 #endif

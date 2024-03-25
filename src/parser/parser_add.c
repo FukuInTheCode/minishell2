@@ -11,8 +11,10 @@ int parser_add(parser_t *parser, char *to_add)
 {
     char **new = malloc(sizeof(char *) * (parser->size + 2));
 
-    if(!new)
-        return 0;
+    if(!new || !to_add) {
+        free(new);
+        return 84;
+    }
     my_memset((void *)new, 0, sizeof(char *) * (parser->size + 2));
     for (size_t i = 0; parser->parsed_input[i]; i++)
         new[i] = parser->parsed_input[i];

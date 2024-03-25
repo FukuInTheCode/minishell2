@@ -14,6 +14,8 @@ static bool add_to_arr(command_t ***arr, type_t t, char **input, size_t *i)
     command_set_type(command, t);
     *arr = command_array_add(*arr, command);
     if (t != PIPE_T && t != END) {
+        if (!arr[*i + 1] || !my_strcmp(PIPE, input[*i + 1]))
+            return false;
         *i += 1;
         command = command_create();
         command_set_type(command, FILE_T);
