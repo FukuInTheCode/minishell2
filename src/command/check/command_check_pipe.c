@@ -17,7 +17,7 @@ static int do_pipe_error(shell_t *shell)
 int command_check_pipe(command_t *command, command_t **arr,
     size_t i, void *shell)
 {
-    if  (!i || command_is_empty(arr[i + 1]))
+    if (!i || command_is_empty(arr[i + 1]))
         return do_pipe_error(shell);
     for (; i && arr[i]->type != COMMAND; i--);
     if (command_is_empty(arr[i]))

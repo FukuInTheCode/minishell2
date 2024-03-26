@@ -95,9 +95,11 @@ int command_array_redirection(command_t **arr)
         if (arr[i]->type == LEFT_RED)
             error = create_left_redirect(arr[i - 1], arr[i + 1]);
         if (arr[i]->type == RIGHT_RED)
-            error = create_right_redirect(arr[find_before(arr, i)], arr[i + 1]);
+            error = create_right_redirect(arr[find_before(arr, i)],
+                arr[i + 1]);
         if (arr[i]->type == RIGHT_DBLRED)
-            error = create_dblright_redirect(arr[find_before(arr, i)], arr[i + 1]);
+            error = create_dblright_redirect(arr[find_before(arr, i)],
+                arr[i + 1]);
         if (error)
             return error;
     }

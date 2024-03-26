@@ -11,7 +11,7 @@ int parser_add(parser_t *parser, char *to_add)
 {
     char **new = malloc(sizeof(char *) * (parser->size + 2));
 
-    if(!new || !to_add) {
+    if (!new || !to_add) {
         free(new);
         return 84;
     }
