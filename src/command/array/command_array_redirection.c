@@ -58,7 +58,7 @@ static int create_right_redirect(command_t *before, command_t *curr)
         my_dputs(2, "Ambiguous output redirect.\n");
         return 1;
     }
-    before->out = open(*curr->argv, O_CREAT | O_WRONLY);
+    before->out = open(*curr->argv, O_CREAT | O_WRONLY | O_TRUNC);
     if (before->out < 0)
         perror("open");
     return 0;
