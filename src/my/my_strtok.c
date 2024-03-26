@@ -43,4 +43,3 @@ char *my_strtok(char *s, char const *delim)
     change_str_save(&s_ptr_save, i);
     return ret;
 }
-

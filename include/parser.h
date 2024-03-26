@@ -11,7 +11,6 @@
     #include <stddef.h>
     #include "command.h"
 
-
     #define DOUBLE_LEFT "<<"
     #define DOUBLE_RIGHT ">>"
     #define SINGLE_LEFT " < "
