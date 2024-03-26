@@ -26,6 +26,7 @@ int shell_command(shell_t *shell, char const *input)
         shell_set_code(shell, 1);
         return 0;
     }
+    command_array_exec(shell->cmds, shell);
     parser_destroy(parser);
     return 0;
 }
