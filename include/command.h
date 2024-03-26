@@ -36,6 +36,10 @@ int command_set_argc(command_t *, int);
 int command_set_argv(command_t *, char **);
 int command_set_type(command_t *, type_t);
 int command_set_in(command_t *, int);
+int command_path(command_t *, void *);
+int command_exec(command_t *, void *);
+int command_error(command_t *, int, void *);
+int command_status(void *, int);
 
 command_t **command_array_create(void);
 int command_array_destroy(command_t **);
@@ -44,6 +48,7 @@ command_t **command_array_add(command_t **, command_t *);
 int command_array_pipe(command_t **);
 int command_array_redirection(command_t **);
 int command_array_error(command_t **, void *);
+int command_array_exec(command_t **, void *);
 
 bool command_is_empty(command_t *);
 int command_check_pipe(command_t *, command_t **, size_t, void *);

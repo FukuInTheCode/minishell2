@@ -16,7 +16,7 @@ static char *create_path(char const *former, char const *latter,
         return NULL;
     my_memset(path, 0, my_strlen(former) + my_strlen(latter) + 1 + has_slash);
     my_strcat(path, former);
-    if (!has_slash)
+    if (has_slash)
         my_strcat(path, "/");
     my_strcat(path, latter);
     return path;
@@ -34,5 +34,5 @@ char *path_concat(char const *former, char const *latter)
         return my_strdup(former);
     if (former[my_strlen(former) - 1] == '/' || *latter == '/')
         has_slash = true;
-    return create_path(former, latter, has_slash);
+    return create_path(former, latter, !has_slash);
 }
