@@ -12,7 +12,7 @@ static int do_child_process(command_t *command, shell_t *shell,
 {
     int tmp = 0;
 
-    if (command->in != SYS_IN)
+    if (command->in != SYS_IN && !command_is_builtin(command))
         dup2(command->in, 0);
     if (command->out != SYS_OUT)
         dup2(command->out, 1);
