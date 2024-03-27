@@ -26,6 +26,7 @@ static int wait_process(command_t *command, pid_t pid, shell_t *shell)
 
     if (!pid)
         return 0;
+    printf("%d : %s\n", pid, command->argv[0]);
     waitpid(pid, &status, 0);
     command_status(shell, status);
     return 0;
@@ -45,12 +46,12 @@ static int execute_pipeline(command_t **commands, size_t *i,
     int error = 0;
     size_t save_i = *i;
 
-    for (; commands[*i] && commands[*i]->type != END; (*i)++) {
+    for (; !*do_break && commands[*i] && commands[*i]->type != END; (*i)++) {
         if (commands[*i]->type == COMMAND &&
             commands[*i]->argv && commands[*i]->argv[0])
             error |= command_exec(commands[*i], shell_ptr, commands, *i);
         if (((shell_t *)shell_ptr)->do_exit)
-            break;
+            *do_break = true;
     }
     close_pipes(commands, save_i, *i);
     wait_processes(commands, save_i, *i, shell_ptr);

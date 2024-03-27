@@ -7,8 +7,12 @@
 
 #include "my.h"
 
-static int close_useless_pipes(command_t **arr, size_t i)
+static int handle_pipes(command_t **arr, size_t i)
 {
+    if (arr[i]->in != SYS_IN && !command_is_builtin(arr[i]))
+        dup2(arr[i]->in, 0);
+    if (arr[i]->out != SYS_OUT)
+        dup2(arr[i]->out, 1);
     for (size_t j = 0; arr[j]; j++) {
         if (j == i || arr[j]->type != COMMAND)
             continue;
@@ -25,18 +29,15 @@ static int do_child_process(command_t *command, shell_t *shell,
 {
     int tmp = 0;
 
-    if (command->in != SYS_IN && !command_is_builtin(command)) {
-        dup2(command->in, 0);
-    }
-    if (command->out != SYS_OUT) {
-        dup2(command->out, 1);
-    }
-    close_useless_pipes(arr, i);
+    handle_pipes(arr, i);
     if (command_is_builtin(command)) {
         tmp = command_builtins(command, (void *)shell);
-        if (command->out != 1) {
+        if (command->out != SYS_OUT) {
+            close(command->out);
             shell_set_exit(shell, true);
         }
+        if (command->in != SYS_IN)
+            close(command->in);
         return tmp;
     }
     if (execve(command->argv[0], command->argv, shell->env) == -1)
