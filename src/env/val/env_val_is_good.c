@@ -29,10 +29,15 @@ static bool is_alphanum(char c)
 
 bool env_val_is_good(char const *var)
 {
-    if (!var || !is_letter(*var))
+    if (!var || !is_letter(*var)) {
+        my_dputs(2, "setenv: Variable name must begin with a letter.\n");
         return false;
+    }
     for (int i = 1; var[i]; i++)
-        if (!is_alphanum(var[i]))
+        if (!is_alphanum(var[i])) {
+            my_dputs(2, "setenv: Variable name "
+                "must contain alphanumeric characters.\n");
             return false;
+        }
     return true;
 }
