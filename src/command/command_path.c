@@ -10,6 +10,8 @@
 
 static bool command_is_builtins(command_t *command)
 {
+    if (!command->argv || !command->argv[0])
+        return false;
     if (!my_strcmp(command->argv[0], "env"))
         return true;
     if (!my_strcmp(command->argv[0], "cd"))
@@ -46,7 +48,7 @@ static int command_find_path(command_t *command, shell_t *shell)
 
 int command_path(command_t *command, void *shell_ptr)
 {
-    if (command->type != COMMAND)
+    if (command->type != COMMAND || !command->argv || !command->argv[0])
         return 0;
     if (command_is_builtins(command))
         return 0;

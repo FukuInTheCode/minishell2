@@ -13,6 +13,8 @@ static int do_child_process(command_t *command, shell_t *shell)
         dup2(command->in, 0);
     if (command->out != SYS_OUT)
         dup2(command->out, 1);
+    if (command_is_builtin(command))
+        exit(command_builtins(command, (void *)shell));
     if (execve(command->argv[0], command->argv, shell->env) == -1)
         return command_error(command, errno, shell);
     return 0;
