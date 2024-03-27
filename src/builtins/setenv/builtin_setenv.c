@@ -17,7 +17,7 @@ static bool setenv_argv_is_good(shell_t *shell, int argc, char **argv)
     return true;
 }
 
-int my_setenv(shell_t *shell, int argc, char **argv)
+int builtin_setenv(shell_t *shell, int argc, char **argv)
 {
     if (!setenv_argv_is_good(shell, argc, argv))
         return 0;
