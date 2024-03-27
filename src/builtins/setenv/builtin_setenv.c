@@ -14,15 +14,19 @@ static bool setenv_argv_is_good(shell_t *shell, int argc, char **argv)
         shell->return_code = 1;
         return false;
     }
+    if (!env_val_is_good(argv[1])) {
+        shell_set_code(shell, 1);
+        return false;
+    }
     return true;
 }
 
 int builtin_setenv(shell_t *shell, int argc, char **argv)
 {
-    if (!setenv_argv_is_good(shell, argc, argv))
-        return 0;
     if (argc == 1)
         return builtin_env(shell, argc, argv);
+    if (!setenv_argv_is_good(shell, argc, argv))
+        return 0;
     if (env_contains(shell->env, argv[1])) {
         shell->env = env_change(shell->env, argv[1], argv[2]);
         shell->return_code = 0;
