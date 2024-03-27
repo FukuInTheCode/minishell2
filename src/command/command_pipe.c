@@ -10,8 +10,14 @@
 
 static int create_pipe(command_t *before, command_t *after)
 {
-    before->out_is_used = true;
-    after->in_is_used = true;
+    int fildes[2];
+
+    if (pipe(fildes)) {
+        perror("pipe");
+        return 84;
+    }
+    before->out = fildes[1];
+    after->in = fildes[0];
     return 0;
 }
 
@@ -21,7 +27,7 @@ static size_t find_before(command_t **arr, size_t i)
     return i;
 }
 
-int command_array_pipe(command_t **arr)
+int command_pipe(command_t **arr)
 {
     size_t before_i = 0;
 
@@ -29,6 +35,7 @@ int command_array_pipe(command_t **arr)
         if (arr[i]->type == PIPE_T) {
             before_i = find_before(arr, i);
             create_pipe(arr[before_i], arr[i + 1]);
+            break;
         }
     return 0;
 }

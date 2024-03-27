@@ -37,13 +37,11 @@ static int create_left_redirect(command_t *before, command_t *curr)
         handle_file_error(curr, 1, 0);
         return 1;
     }
-    if (before->in != SYS_IN) {
+    if (before->in_is_used) {
         my_dputs(2, "Ambiguous input redirect.\n");
         return 1;
     }
-    before->in = open(*curr->argv, O_RDONLY);
-    if (before->in < 0)
-        perror("open");
+    before->in_is_used = true;
     return 0;
 }
 
@@ -54,13 +52,11 @@ static int create_right_redirect(command_t *before, command_t *curr)
         handle_file_error(curr, 0, 1);
         return 1;
     }
-    if (before->out != SYS_OUT) {
+    if (before->out_is_used) {
         my_dputs(2, "Ambiguous output redirect.\n");
         return 1;
     }
-    before->out = open(*curr->argv, O_CREAT | O_WRONLY | O_TRUNC);
-    if (before->out < 0)
-        perror("open");
+    before->out_is_used = true;
     return 0;
 }
 
@@ -71,13 +67,11 @@ static int create_dblright_redirect(command_t *before, command_t *curr)
         handle_file_error(curr, 0, 1);
         return 1;
     }
-    if (before->out != SYS_OUT) {
+    if (before->out_is_used) {
         my_dputs(2, "Ambiguous output redirect.\n");
         return 1;
     }
-    before->out = open(*curr->argv, O_CREAT | O_WRONLY | O_APPEND);
-    if (before->out < 0)
-        perror("open");
+    before->out_is_used = true;
     return 0;
 }
 

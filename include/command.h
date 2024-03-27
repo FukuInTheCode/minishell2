@@ -27,6 +27,8 @@ typedef struct command_s {
     type_t type;
     int out;
     int in;
+    bool out_is_used;
+    bool in_is_used;
 } command_t;
 
 
@@ -37,9 +39,11 @@ int command_set_argv(command_t *, char **);
 int command_set_type(command_t *, type_t);
 int command_set_in(command_t *, int);
 int command_path(command_t *, void *);
-int command_exec(command_t *, void *);
+int command_exec(command_t *, void *, command_t **);
 int command_error(command_t *, int, void *);
 int command_status(void *, int);
+int command_pipe(command_t **);
+int command_redirection(command_t **);
 
 command_t **command_array_create(void);
 int command_array_destroy(command_t **);
