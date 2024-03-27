@@ -19,9 +19,7 @@ static bool cd_args_is_good(shell_t *shell, int argc, char **argv)
 
 static bool cd_new_pwd_is_good(shell_t *shell, char const *new_pwd)
 {
-    if (!new_pwd)
-        return false;
-    if (!path_exist(new_pwd)) {
+    if (!new_pwd || !path_exist(new_pwd)) {
         my_dputs(2, new_pwd);
         my_dputs(2, ": No such file or directory.\n");
         shell_set_code(shell, 1);
