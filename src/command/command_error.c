@@ -11,7 +11,7 @@ static int command_other_error(command_t *command, int err, shell_t *shell)
 {
     if (err == ENOEXEC) {
         my_dputs(2, command->argv[0]);
-        my_dputs(2, "Exec format error. Wrong Architecture.\n");
+        my_dputs(2, ": Exec format error. Wrong Architecture.\n");
         return shell_set_code(shell, 1);
     }
     return 0;

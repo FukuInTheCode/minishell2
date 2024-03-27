@@ -18,5 +18,6 @@ command_t *command_create(void)
     cmd->type = END;
     cmd->in_is_used = false;
     cmd->out_is_used = false;
+    cmd->pid = 0;
     return cmd;
 }
