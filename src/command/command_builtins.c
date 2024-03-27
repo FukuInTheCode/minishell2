@@ -17,7 +17,7 @@ int command_builtins(command_t *command, void *shell_ptr)
         return builtin_unsetenv(shell_ptr, command->argc, command->argv);
     if (!my_strcmp("cd", command->argv[0]))
         return builtin_cd(shell_ptr, command->argc, command->argv);
-    // if (!my_strcmp("exit", command->argv[0]))
-        // return builtin_exit(shell_ptr, command->argc, command.argv);
+    if (!my_strcmp("exit", command->argv[0]))
+        return builtin_exit(shell_ptr, command->argc, command->argv);
     return 0;
 }

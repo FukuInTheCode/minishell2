@@ -17,6 +17,7 @@ typedef struct shell_s {
     char **env;
     char *oldpwd;
     char *prompt;
+    bool do_exit;
 } shell_t;
 
 shell_t *shell_create(void);
@@ -25,6 +26,7 @@ int shell_set_code(shell_t *, int);
 int shell_set_cmds(shell_t *, command_t **);
 int shell_set_input(shell_t *, char *);
 int shell_set_oldpwd(shell_t *, char const *);
+int shell_set_exit(shell_t *, bool);
 int shell_set_env(shell_t *, char **);
 int shell_prompt(shell_t *);
 int shell_run(shell_t *);

@@ -19,6 +19,8 @@ int shell_run(shell_t *shell)
             error = 84;
             break;
         }
+        if (shell->do_exit)
+            break;
         shell_prompt(shell);
     }
     free(input);

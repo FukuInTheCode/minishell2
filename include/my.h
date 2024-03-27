@@ -46,5 +46,6 @@ char *my_strcat(char *, char const *);
 int my_strncmp(char const *, char const *, int);
 char *my_strndup(char const *, size_t);
 int my_strcmp(char const *, char const *);
+int my_atoi(char const *);
 
 #endif
