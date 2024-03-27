@@ -21,20 +21,13 @@ static int create_pipe(command_t *before, command_t *after)
     return 0;
 }
 
-static size_t find_before(command_t **arr, size_t i)
-{
-    for (; i != 0 && arr[i]->type != COMMAND; i--);
-    return i;
-}
-
 int command_pipe(command_t **arr)
 {
-    size_t before_i = 0;
+    command_t *cmd = *arr;
 
-    for (size_t i = 0; arr[i]; i++)
+    for (size_t i = 0; arr[i] && arr[i]->type != END; i++)
         if (arr[i]->type == PIPE_T) {
-            before_i = find_before(arr, i);
-            create_pipe(arr[before_i], arr[i + 1]);
+            create_pipe(cmd, arr[i + 1]);
             break;
         }
     return 0;
