@@ -52,5 +52,7 @@ int command_array_exec(command_t **, void *);
 
 bool command_is_empty(command_t *);
 int command_check_pipe(command_t *, command_t **, size_t, void *);
+bool command_is_builtin(command_t *);
+int command_builtins(command_t *, void *);
 
 #endif
