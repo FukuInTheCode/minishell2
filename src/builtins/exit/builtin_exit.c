@@ -25,5 +25,6 @@ int builtin_exit(shell_t *shell, int argc, char **argv)
     if (argc == 2)
         shell_set_code(shell, my_atoi(argv[1]));
     shell_set_exit(shell, true);
+    my_dputs(1, "exit\n");
     return 0;
 }
