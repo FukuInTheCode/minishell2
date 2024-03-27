@@ -14,6 +14,6 @@ int command_array_exec(command_t **commands, void *shell_ptr)
     for (size_t i = 0; commands[i]; i++)
         if (commands[i]->type == COMMAND &&
             commands[i]->argv && commands[i]->argv[0])
-            error |= command_exec(commands[i], shell_ptr);
+            error |= command_exec(commands[i], shell_ptr, commands + i);
     return error;
 }

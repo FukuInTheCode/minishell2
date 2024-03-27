@@ -16,5 +16,7 @@ command_t *command_create(void)
     cmd->argc = 0;
     cmd->argv = NULL;
     cmd->type = END;
+    cmd->in_is_used = false;
+    cmd->out_is_used = false;
     return cmd;
 }

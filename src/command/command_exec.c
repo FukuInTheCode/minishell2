@@ -7,7 +7,8 @@
 
 #include "my.h"
 
-static int do_child_process(command_t *command, shell_t *shell)
+static int do_child_process(command_t *command, shell_t *shell,
+    command_t **remaining)
 {
     int tmp = 0;
 
@@ -39,12 +40,14 @@ static int do_parent_process(command_t *command, pid_t pid, shell_t *shell)
     return 0;
 }
 
-int command_exec(command_t *command, void *shell_ptr)
+int command_exec(command_t *command, void *shell_ptr, command_t **remaining)
 {
     pid_t pid = 0;
     bool is_builtin = false;
 
     command_path(command, shell_ptr);
+    command_pipe(remaining);
+    command_redirection(remaining);
     is_builtin = command_is_builtin(command);
     if (!is_builtin || command->out != 1)
         pid = fork();
@@ -53,6 +56,6 @@ int command_exec(command_t *command, void *shell_ptr)
         return 84;
     }
     if (!pid)
-        return do_child_process(command, shell_ptr);
+        return do_child_process(command, shell_ptr, remaining);
     return do_parent_process(command, pid, shell_ptr);
 }
