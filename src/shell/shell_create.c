@@ -23,6 +23,7 @@ shell_t *shell_create(void)
     shell->env = NULL;
     shell->oldpwd = NULL;
     shell->prompt = my_strdup("$> ");
+    shell->do_exit = 0;
     if (!shell->prompt)
         return NULL;
     return shell;
