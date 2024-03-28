@@ -81,6 +81,20 @@ static size_t find_before(command_t **arr, size_t i)
     return i;
 }
 
+static int create_dblleft_redirect(command_t *before, command_t *curr)
+{
+    if (!curr->argv || !*curr->argv || curr->type != EOF_T) {
+        my_dputs(2, "Missing name for redirect.\n");
+        return 1;
+    }
+    if (before->out_is_used) {
+        my_dputs(2, "Ambiguous output redirect.\n");
+        return 1;
+    }
+    before->out_is_used = true;
+    return 0;
+}
+
 int command_array_redirection(command_t **arr)
 {
     int error = 0;
@@ -93,6 +107,9 @@ int command_array_redirection(command_t **arr)
                 arr[i + 1]);
         if (arr[i]->type == RIGHT_DBLRED)
             error = create_dblright_redirect(arr[find_before(arr, i)],
+                arr[i + 1]);
+        if (arr[i]->type == LEFT_DBLRED)
+            error = create_dblleft_redirect(arr[find_before(arr, i)],
                 arr[i + 1]);
         if (error)
             return error;

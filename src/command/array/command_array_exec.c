@@ -26,7 +26,6 @@ static int wait_process(command_t *command, pid_t pid, shell_t *shell)
 
     if (!pid)
         return 0;
-    printf("%d : %s\n", pid, command->argv[0]);
     waitpid(pid, &status, 0);
     command_status(shell, status);
     return 0;
