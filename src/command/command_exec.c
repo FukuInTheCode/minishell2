@@ -24,19 +24,12 @@ static int handle_pipes(command_t **arr, size_t i)
     return 0;
 }
 
-// static int handle_redirect(command_t **arr, size_t i)
-// {
-    // for (; arr[i] && arr[i]->type != END && arr[i].type;)
-    // return 0;
-// }
-
 static int do_child_process(command_t *command, shell_t *shell,
     command_t **arr, size_t i)
 {
     int tmp = 0;
 
     handle_pipes(arr, i);
-    // handle_redirect(arr, i);
     if (command_is_builtin(command)) {
         tmp = command_builtins(command, (void *)shell);
         if (command->out != SYS_OUT) {
@@ -49,6 +42,15 @@ static int do_child_process(command_t *command, shell_t *shell,
     }
     if (execve(command->argv[0], command->argv, shell->env) == -1)
         return command_error(command, errno, shell);
+    return 0;
+}
+
+static int close_pipe(command_t *command)
+{
+    if (command->out != SYS_OUT)
+        close(command->out);
+    if (command->in != SYS_IN)
+        close(command->in);
     return 0;
 }
 
@@ -71,5 +73,5 @@ int command_exec(command_t *command, void *shell_ptr,
     }
     if (!pid)
         return do_child_process(command, shell_ptr, arr, i);
-    return 0;
+    return close_pipe(command);
 }
