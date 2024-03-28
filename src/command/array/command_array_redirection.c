@@ -87,11 +87,11 @@ static int create_dblleft_redirect(command_t *before, command_t *curr)
         my_dputs(2, "Missing name for redirect.\n");
         return 1;
     }
-    if (before->out_is_used) {
+    if (before->in_is_used) {
         my_dputs(2, "Ambiguous output redirect.\n");
         return 1;
     }
-    before->out_is_used = true;
+    before->in_is_used = true;
     return 0;
 }
 
