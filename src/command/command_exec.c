@@ -45,6 +45,15 @@ static int do_child_process(command_t *command, shell_t *shell,
     return 0;
 }
 
+static int close_pipe(command_t *command)
+{
+    if (command->out != SYS_OUT)
+        close(command->out);
+    if (command->in != SYS_IN)
+        close(command->in);
+    return 0;
+}
+
 int command_exec(command_t *command, void *shell_ptr,
     command_t **arr, size_t i)
 {
@@ -64,5 +73,5 @@ int command_exec(command_t *command, void *shell_ptr,
     }
     if (!pid)
         return do_child_process(command, shell_ptr, arr, i);
-    return 0;
+    return close_pipe(command);
 }
