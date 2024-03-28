@@ -36,6 +36,25 @@ static int add_argv(command_t *curr, char *line)
     return 0;
 }
 
+static int put_in_stdin(command_t *before, command_t *curr)
+{
+    int pipes[2] = {0, 1};
+
+    if (!curr || !before || !curr->argv)
+        return 1;
+    if (pipe(pipes)) {
+        perror("pipe");
+        return 1;
+    }
+    before->in = pipes[0];
+    for (size_t i = 1; curr->argv[i]; i++) {
+        my_dputs(pipes[1], curr->argv[i]);
+        my_dputs(pipes[1], "\n");
+    }
+    close(pipes[1]);
+    return 0;
+}
+
 int command_dblleft_redirection(command_t *before, command_t *curr)
 {
     char *eof = NULL;
@@ -51,5 +70,5 @@ int command_dblleft_redirection(command_t *before, command_t *curr)
             break;
         add_argv(curr, line);
     }
-    return 0;
+    return put_in_stdin(before, curr);
 }

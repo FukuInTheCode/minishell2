@@ -34,8 +34,7 @@ static int wait_process(command_t *command, pid_t pid, shell_t *shell)
 static int wait_processes(command_t **commands, size_t start, size_t end,
     shell_t *shell)
 {
-    for (; start < end; start++)
-        wait_process(commands[start], commands[start]->pid, shell);
+    wait_process(commands[end - 1], commands[end - 1]->pid, shell);
     return 0;
 }
 
