@@ -29,7 +29,7 @@ static int parse_string(parser_t *parser, char *s, char const *delim)
     for (size_t i = 0; s[i]; i++) {
         if (s[i] == '\"')
             inquote = !inquote;
-        if (!inquote && !my_strncmp(delim, s + i, my_strlen(delim)) && n) {
+        if (!inquote && !my_strncmp(delim, s + i, my_strlen(delim))) {
             error |= parser_add(parser, my_strndup(s + i - n, n));
             error |= parser_add(parser, my_strdup(delim));
             n = 0;
@@ -37,7 +37,7 @@ static int parse_string(parser_t *parser, char *s, char const *delim)
         } else
             n += my_strncmp(delim, s + i, my_strlen(delim)) != 0;
     }
-    if (n && !error)
+    if (!error)
         error |= add_remaining(parser, s, n);
     free(s);
     return error;

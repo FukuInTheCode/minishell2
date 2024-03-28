@@ -15,6 +15,7 @@ int shell_run(shell_t *shell)
 
     shell_prompt(shell);
     for (; getline(&input, &len, stdin) != -1;) {
+        input[my_strlen(input) - 1] = 0;
         if (shell_command(shell, input) == 84) {
             error = 84;
             break;
