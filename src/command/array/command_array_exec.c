@@ -7,6 +7,19 @@
 
 #include "my.h"
 
+static int close_pipes(command_t **commands, size_t start, size_t end)
+{
+    for (; start < end; start++) {
+        if (!commands[start] || commands[start]->type != COMMAND)
+            continue;
+        if (commands[start]->in != SYS_IN)
+            close(commands[start]->in);
+        if (commands[start]->out != SYS_OUT)
+            close(commands[start]->out);
+    }
+    return 0;
+}
+
 static int wait_process(command_t *command, pid_t pid, shell_t *shell)
 {
     int status = 0;
@@ -21,7 +34,8 @@ static int wait_process(command_t *command, pid_t pid, shell_t *shell)
 static int wait_processes(command_t **commands, size_t start, size_t end,
     shell_t *shell)
 {
-    wait_process(commands[end - 1], commands[end - 1]->pid, shell);
+    for (; start < end; start++)
+        wait_process(commands[start], commands[start]->pid, shell);
     return 0;
 }
 
@@ -38,6 +52,7 @@ static int execute_pipeline(command_t **commands, size_t *i,
         if (((shell_t *)shell_ptr)->do_exit)
             *do_break = true;
     }
+    close_pipes(commands, save_i, *i);
     wait_processes(commands, save_i, *i, shell_ptr);
     if (!commands[*i])
         *do_break = true;
