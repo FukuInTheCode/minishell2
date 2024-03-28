@@ -32,6 +32,11 @@ static int create_dblright_redirect(command_t *before, command_t *curr)
     return 0;
 }
 
+static int create_dblleft_redirect(command_t *before, command_t *curr)
+{
+    return command_dblleft_redirection(before, curr);
+}
+
 static size_t find_before(command_t **arr, size_t i)
 {
     for (; i != 0 && arr[i]->type != COMMAND; i--);
@@ -51,6 +56,9 @@ int command_redirection(command_t **arr)
                 arr[i + 1]);
         if (arr[i]->type == RIGHT_DBLRED)
             error = create_dblright_redirect(arr[find_before(arr, i)],
+                arr[i + 1]);
+        if (arr[i]->type == LEFT_DBLRED)
+            error = create_dblleft_redirect(arr[find_before(arr, i)],
                 arr[i + 1]);
         if (error)
             return error;

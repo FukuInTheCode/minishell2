@@ -19,6 +19,7 @@ typedef enum type_e {
     RIGHT_RED,
     RIGHT_DBLRED,
     FILE_T,
+    EOF_T,
     END
 } type_t;
 
@@ -46,6 +47,7 @@ int command_error(command_t *, int, void *);
 int command_status(void *, int);
 int command_pipe(command_t **);
 int command_redirection(command_t **);
+int command_dblleft_redirection(command_t *, command_t *);
 
 command_t **command_array_create(void);
 int command_array_destroy(command_t **);
