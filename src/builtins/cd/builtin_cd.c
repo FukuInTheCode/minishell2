@@ -36,12 +36,16 @@ static bool cd_new_pwd_is_good(shell_t *shell, char const *new_pwd)
 
 static int cd_change_wd(shell_t *shell, char const *new_pwd)
 {
+    char pwd[1001];
+
+    my_memset(pwd, 0, 1001);
     if (!cd_new_pwd_is_good(shell, new_pwd))
         return 0;
     shell_set_oldpwd(shell, env_get(shell->env, "PWD"));
-    env_change(shell->env, "PWD", new_pwd);
     if (chdir(new_pwd) == -1)
         perror("chdir");
+    getcwd(pwd, 1000);
+    shell_set_env(shell, env_change(shell->env, "PWD", pwd));
     return 0;
 }
 
