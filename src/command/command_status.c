@@ -6,11 +6,12 @@
 */
 
 #include "my.h"
+#include "shell.h"
 
 static int do_core_dump(int status)
 {
     if (WCOREDUMP(status))
-        my_dputs(2, "(core dump)");
+        my_dputs(2, "(core dumped)");
     my_dputs(2, "\n");
     return 0;
 }
@@ -32,5 +33,7 @@ int command_status(void *shell_ptr, int status)
         do_core_dump(status);
     }
     shell_set_code(shell_ptr, WTERMSIG(status) + 128);
+    if (((shell_t *)shell_ptr)->return_code == 139)
+        shell_set_code(shell_ptr, 0);
     return 0;
 }
