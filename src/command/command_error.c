@@ -30,7 +30,8 @@ int command_error(command_t *command, int err, void *shell_ptr)
         my_dputs(2, ": Is a directory\n");
         return shell_set_code(shell_ptr, 1);
     }
-    if (err == ENOENT) {
+    if (err == ENOENT || (**command->argv != '.'
+        && **command->argv != '/')) {
         my_dputs(2, command->argv[0]);
         my_dputs(2, ": Command not found.\n");
         return shell_set_code(shell_ptr, 1);
