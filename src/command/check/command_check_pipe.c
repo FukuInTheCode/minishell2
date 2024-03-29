@@ -10,7 +10,7 @@
 static int do_pipe_error(shell_t *shell)
 {
     shell_set_code(shell, 1);
-    my_dputs(2, "Invalid null command\n");
+    my_dputs(2, "Invalid null command.\n");
     return 1;
 }
 
