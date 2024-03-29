@@ -19,6 +19,7 @@ static int command_other_error(command_t *command, int err, shell_t *shell)
 
 int command_error(command_t *command, int err, void *shell_ptr)
 {
+    shell_set_exit(shell_ptr, true);
     if (err == EACCES) {
         my_dputs(2, command->argv[0]);
         my_dputs(2, ": Permission denied.\n");
