@@ -33,7 +33,5 @@ int command_status(void *shell_ptr, int status)
         do_core_dump(status);
     }
     shell_set_code(shell_ptr, WTERMSIG(status) + 128);
-    if (((shell_t *)shell_ptr)->return_code == 139)
-        shell_set_code(shell_ptr, 0);
     return 0;
 }
