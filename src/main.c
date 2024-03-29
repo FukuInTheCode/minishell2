@@ -17,6 +17,7 @@ int main(int argc, char **argv, char **envp)
     if (!shell)
         return 84;
     shell_set_env(shell, env_copy(envp));
+    shell_set_oldpwd(shell, env_get(envp, "OLDPWD"));
     if (shell_run(shell) == 84) {
         shell_destroy(shell);
         return 84;
