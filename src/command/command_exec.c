@@ -40,9 +40,7 @@ static int do_child_process(command_t *command, shell_t *shell,
             close(command->in);
         return tmp;
     }
-    if ((**command->argv != '/' &&
-        **command->argv != '.') ||
-        execve(command->argv[0], command->argv, shell->env) == -1)
+    if (execve(command->argv[0], command->argv, shell->env) == -1)
         return command_error(command, errno, shell);
     return 0;
 }
