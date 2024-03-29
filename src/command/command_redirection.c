@@ -18,7 +18,7 @@ static int create_left_redirect(command_t *before, command_t *curr)
 
 static int create_right_redirect(command_t *before, command_t *curr)
 {
-    before->out = open(*curr->argv, O_CREAT | O_WRONLY | O_TRUNC);
+    before->out = open(*curr->argv, O_CREAT | O_WRONLY | O_TRUNC, 0644);
     if (before->out < 0)
         perror("open");
     return 0;
@@ -26,7 +26,7 @@ static int create_right_redirect(command_t *before, command_t *curr)
 
 static int create_dblright_redirect(command_t *before, command_t *curr)
 {
-    before->out = open(*curr->argv, O_CREAT | O_WRONLY | O_APPEND);
+    before->out = open(*curr->argv, O_CREAT | O_WRONLY | O_APPEND, 0644);
     if (before->out < 0)
         perror("open");
     return 0;
