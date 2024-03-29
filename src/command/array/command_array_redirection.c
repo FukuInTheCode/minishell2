@@ -77,7 +77,8 @@ static int create_dblright_redirect(command_t *before, command_t *curr)
 
 static size_t find_before(command_t **arr, size_t i)
 {
-    for (; i != 0 && arr[i]->type != COMMAND; i--);
+    for (; i != 0 && arr[i]->type != COMMAND && arr[i]->type != PIPE_T &&
+        arr[i]->type != END; i--);
     return i;
 }
 
@@ -88,7 +89,7 @@ static int create_dblleft_redirect(command_t *before, command_t *curr)
         return 1;
     }
     if (before->in_is_used) {
-        my_dputs(2, "Ambiguous output redirect.\n");
+        my_dputs(2, "Ambiguous input redirect.\n");
         return 1;
     }
     before->in_is_used = true;
@@ -101,7 +102,7 @@ int command_array_redirection(command_t **arr)
 
     for (size_t i = 0; arr[i]; i++) {
         if (arr[i]->type == LEFT_RED)
-            error = create_left_redirect(arr[i - 1], arr[i + 1]);
+            error = create_left_redirect(arr[find_before(arr, i)], arr[i + 1]);
         if (arr[i]->type == RIGHT_RED)
             error = create_right_redirect(arr[find_before(arr, i)],
                 arr[i + 1]);
