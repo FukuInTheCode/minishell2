@@ -11,3 +11,4 @@
     #include "shell.h"
     #include "command.h"
     #include "parser.h"
+    #include "separator.h"

@@ -8,6 +8,8 @@
 #pragma once
     #define SEPARATOR_H
 
+    #include <stdbool.h>
+
 typedef int(*sep_func)();
 
 typedef struct separator_s {

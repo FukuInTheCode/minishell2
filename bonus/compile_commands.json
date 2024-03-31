@@ -24,6 +24,22 @@
       "-Wextra",
       "-g",
       "-o",
+      "obj/shell/shell_get_env.o",
+      "src/shell/shell_get_env.c"
+    ],
+    "directory": "/home/fu/epi/PSU/200/minishell2/bonus",
+    "file": "/home/fu/epi/PSU/200/minishell2/bonus/src/shell/shell_get_env.c",
+    "output": "/home/fu/epi/PSU/200/minishell2/bonus/obj/shell/shell_get_env.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-I./include/",
+      "-Wall",
+      "-Wextra",
+      "-g",
+      "-o",
       "obj/shell/shell_set_code.o",
       "src/shell/shell_set_code.c"
     ],
@@ -46,6 +62,38 @@
     "directory": "/home/fu/epi/PSU/200/minishell2/bonus",
     "file": "/home/fu/epi/PSU/200/minishell2/bonus/src/shell/shell_set_err.c",
     "output": "/home/fu/epi/PSU/200/minishell2/bonus/obj/shell/shell_set_err.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-I./include/",
+      "-Wall",
+      "-Wextra",
+      "-g",
+      "-o",
+      "obj/shell/shell_get_exit.o",
+      "src/shell/shell_get_exit.c"
+    ],
+    "directory": "/home/fu/epi/PSU/200/minishell2/bonus",
+    "file": "/home/fu/epi/PSU/200/minishell2/bonus/src/shell/shell_get_exit.c",
+    "output": "/home/fu/epi/PSU/200/minishell2/bonus/obj/shell/shell_get_exit.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-I./include/",
+      "-Wall",
+      "-Wextra",
+      "-g",
+      "-o",
+      "obj/shell/shell_run.o",
+      "src/shell/shell_run.c"
+    ],
+    "directory": "/home/fu/epi/PSU/200/minishell2/bonus",
+    "file": "/home/fu/epi/PSU/200/minishell2/bonus/src/shell/shell_run.c",
+    "output": "/home/fu/epi/PSU/200/minishell2/bonus/obj/shell/shell_run.o"
   },
   {
     "arguments": [
@@ -104,6 +152,22 @@
       "-Wextra",
       "-g",
       "-o",
+      "obj/shell/shell_get_out.o",
+      "src/shell/shell_get_out.c"
+    ],
+    "directory": "/home/fu/epi/PSU/200/minishell2/bonus",
+    "file": "/home/fu/epi/PSU/200/minishell2/bonus/src/shell/shell_get_out.c",
+    "output": "/home/fu/epi/PSU/200/minishell2/bonus/obj/shell/shell_get_out.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-I./include/",
+      "-Wall",
+      "-Wextra",
+      "-g",
+      "-o",
       "obj/shell/shell_create.o",
       "src/shell/shell_create.c"
     ],
@@ -120,12 +184,76 @@
       "-Wextra",
       "-g",
       "-o",
-      "obj/shell/shell_set_subshell.o",
-      "src/shell/shell_set_subshell.c"
+      "obj/shell/shell_handle_prompt.o",
+      "src/shell/shell_handle_prompt.c"
     ],
     "directory": "/home/fu/epi/PSU/200/minishell2/bonus",
-    "file": "/home/fu/epi/PSU/200/minishell2/bonus/src/shell/shell_set_subshell.c",
-    "output": "/home/fu/epi/PSU/200/minishell2/bonus/obj/shell/shell_set_subshell.o"
+    "file": "/home/fu/epi/PSU/200/minishell2/bonus/src/shell/shell_handle_prompt.c",
+    "output": "/home/fu/epi/PSU/200/minishell2/bonus/obj/shell/shell_handle_prompt.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-I./include/",
+      "-Wall",
+      "-Wextra",
+      "-g",
+      "-o",
+      "obj/shell/shell_get_code.o",
+      "src/shell/shell_get_code.c"
+    ],
+    "directory": "/home/fu/epi/PSU/200/minishell2/bonus",
+    "file": "/home/fu/epi/PSU/200/minishell2/bonus/src/shell/shell_get_code.c",
+    "output": "/home/fu/epi/PSU/200/minishell2/bonus/obj/shell/shell_get_code.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-I./include/",
+      "-Wall",
+      "-Wextra",
+      "-g",
+      "-o",
+      "obj/shell/shell_clean.o",
+      "src/shell/shell_clean.c"
+    ],
+    "directory": "/home/fu/epi/PSU/200/minishell2/bonus",
+    "file": "/home/fu/epi/PSU/200/minishell2/bonus/src/shell/shell_clean.c",
+    "output": "/home/fu/epi/PSU/200/minishell2/bonus/obj/shell/shell_clean.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-I./include/",
+      "-Wall",
+      "-Wextra",
+      "-g",
+      "-o",
+      "obj/shell/shell_get_in.o",
+      "src/shell/shell_get_in.c"
+    ],
+    "directory": "/home/fu/epi/PSU/200/minishell2/bonus",
+    "file": "/home/fu/epi/PSU/200/minishell2/bonus/src/shell/shell_get_in.c",
+    "output": "/home/fu/epi/PSU/200/minishell2/bonus/obj/shell/shell_get_in.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-I./include/",
+      "-Wall",
+      "-Wextra",
+      "-g",
+      "-o",
+      "obj/shell/shell_get_cmds.o",
+      "src/shell/shell_get_cmds.c"
+    ],
+    "directory": "/home/fu/epi/PSU/200/minishell2/bonus",
+    "file": "/home/fu/epi/PSU/200/minishell2/bonus/src/shell/shell_get_cmds.c",
+    "output": "/home/fu/epi/PSU/200/minishell2/bonus/obj/shell/shell_get_cmds.o"
   },
   {
     "arguments": [
@@ -168,6 +296,22 @@
       "-Wextra",
       "-g",
       "-o",
+      "obj/shell/shell_process_commands.o",
+      "src/shell/shell_process_commands.c"
+    ],
+    "directory": "/home/fu/epi/PSU/200/minishell2/bonus",
+    "file": "/home/fu/epi/PSU/200/minishell2/bonus/src/shell/shell_process_commands.c",
+    "output": "/home/fu/epi/PSU/200/minishell2/bonus/obj/shell/shell_process_commands.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-I./include/",
+      "-Wall",
+      "-Wextra",
+      "-g",
+      "-o",
       "obj/shell/shell_set_exit.o",
       "src/shell/shell_set_exit.c"
     ],
@@ -184,11 +328,43 @@
       "-Wextra",
       "-g",
       "-o",
-      "obj/shell/shell_set_run.o",
-      "src/shell/shell_set_run.c"
+      "obj/shell/shell_parse_input.o",
+      "src/shell/shell_parse_input.c"
     ],
     "directory": "/home/fu/epi/PSU/200/minishell2/bonus",
-    "file": "/home/fu/epi/PSU/200/minishell2/bonus/src/shell/shell_set_run.c",
-    "output": "/home/fu/epi/PSU/200/minishell2/bonus/obj/shell/shell_set_run.o"
+    "file": "/home/fu/epi/PSU/200/minishell2/bonus/src/shell/shell_parse_input.c",
+    "output": "/home/fu/epi/PSU/200/minishell2/bonus/obj/shell/shell_parse_input.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-I./include/",
+      "-Wall",
+      "-Wextra",
+      "-g",
+      "-o",
+      "obj/shell/shell_get_err.o",
+      "src/shell/shell_get_err.c"
+    ],
+    "directory": "/home/fu/epi/PSU/200/minishell2/bonus",
+    "file": "/home/fu/epi/PSU/200/minishell2/bonus/src/shell/shell_get_err.c",
+    "output": "/home/fu/epi/PSU/200/minishell2/bonus/obj/shell/shell_get_err.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-I./include/",
+      "-Wall",
+      "-Wextra",
+      "-g",
+      "-o",
+      "obj/shell/shell_process_input.o",
+      "src/shell/shell_process_input.c"
+    ],
+    "directory": "/home/fu/epi/PSU/200/minishell2/bonus",
+    "file": "/home/fu/epi/PSU/200/minishell2/bonus/src/shell/shell_process_input.c",
+    "output": "/home/fu/epi/PSU/200/minishell2/bonus/obj/shell/shell_process_input.o"
   }
 ]

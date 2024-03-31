@@ -32,7 +32,7 @@ typedef struct command_s {
     int in;
     int err;
     bool do_wait;
-    uint8_t status;
+    int status;
     pid_t pid;
     struct command_s *next;
     struct command_s *prev;
@@ -50,7 +50,7 @@ int command_set_err(command_t *, int);
 int command_set_pid(command_t *, pid_t);
 int command_set_next(command_t *, command_t *);
 int command_set_prev(command_t *, command_t *);
-int command_set_status(command_t *, uint8_t);
+int command_set_status(command_t *, int);
 int command_set_wait(command_t *, bool);
 
 int command_get_argc(command_t *);
@@ -59,7 +59,7 @@ type_t command_get_type(command_t *);
 int comand_get_out(command_t *);
 int command_get_in(command_t *);
 int command_get_err(command_t *);
-uint8_t command_get_status(command_t *);
+int command_get_status(command_t *);
 bool command_get_wait(command_t *);
 command_t *command_get_next(command_t *);
 command_t *command_get_prev(command_t *);
