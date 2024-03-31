@@ -7,3 +7,8 @@
 
 #include "my.h"
 
+int shell_set_cmds(shell_t *shell, command_t *cmds)
+{
+    shell->cmds = cmds;
+    return 0;
+}

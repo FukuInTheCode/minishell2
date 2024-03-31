@@ -19,12 +19,14 @@ typedef struct parser_s {
 } parser_t;
 
 parser_t *parser_create(void);
-int parse_destroy(parser_t *);
+int parser_destroy(parser_t *);
 
 int parser_set_tokens(parser_t *, char **);
 
 int parser_parse(parser_t *, char const *);
 command_t *parser_to_command(parser_t *);
+
+bool parser_is_separator(parser_t *);
 
 int parser_command_end(parser_t *);
 int parser_command_pipe(parser_t *);
@@ -36,7 +38,7 @@ int parser_command_command(parser_t *);
 
 static separator_t const separators[] = {
     {";", "", parser_command_end},
-    {"|", "|", parser_command_pipe},
+    {"|", "", parser_command_pipe},
     {">", ">", parser_command_right},
     {">>", "", parser_command_double_right},
     {"<", "<", parser_command_left},

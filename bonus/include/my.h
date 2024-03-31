@@ -8,3 +8,6 @@
 #pragma once
     #define MY_H
 
+    #include "shell.h"
+    #include "command.h"
+    #include "parser.h"

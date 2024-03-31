@@ -13,8 +13,11 @@
 
     #include "command.h"
 
+    #define SYS_OUT 1
+    #define SYS_IN 0
+    #define SYS_ERR 2
+
 typedef struct shell_s {
-    bool is_subshell;
     uint8_t exit_code;
     command_t *cmds;
     char **env;
@@ -34,7 +37,6 @@ int shell_set_exit(shell_t *, bool);
 int shell_set_in(shell_t *, int);
 int shell_set_out(shell_t *, int);
 int shell_set_err(shell_t *, int);
-int shell_set_subshell(shell_t *, bool);
 
 uint8_t shell_get_code(shell_t *);
 command_t *shell_get_cmds(shell_t *);
@@ -43,11 +45,10 @@ bool shell_get_exit(shell_t *);
 int shell_get_in(shell_t *);
 int shell_get_out(shell_t *);
 int shell_get_err(shell_t *);
-int shell_get_subshell(shell_t *);
 
 int shell_handle_prompt(shell_t *);
 int shell_run(shell_t *);
 int shell_process_input(shell_t *, char const *);
-char **shell_parse_input(shell_t *, char const *);
+int shell_parse_input(shell_t *, char const *);
 int shell_process_commands(shell_t *);
-int shell_add_command(shell_t *, command_t *);
+int shell_clean(shell_t *);

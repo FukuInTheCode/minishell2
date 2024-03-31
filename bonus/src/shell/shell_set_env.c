@@ -7,3 +7,9 @@
 
 #include "my.h"
 
+int shell_set_env(shell_t *shell, char **env)
+{
+    env_destroy(shell->env);
+    shell->env = env;
+    return 0;
+}

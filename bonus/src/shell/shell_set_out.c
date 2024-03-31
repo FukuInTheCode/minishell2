@@ -5,5 +5,10 @@
 ** shell_set_out.c
 */
 
-#include "my.h"
+#include "shell.h"
 
+int shell_set_out(shell_t *shell, int out)
+{
+    shell->out = out;
+    return 0;
+}
